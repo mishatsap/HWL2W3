@@ -17,7 +17,7 @@ let test = async function () {
       let result = await nextPromise;
         alert(result);
       } catch(error){
-        alert(error);
+        console.error(error);
       }
 } 
 
