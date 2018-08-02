@@ -1,15 +1,24 @@
-function promise() {
-  console.log('Please wait ten seconds');
-  return new Promise (function(resolve, reject) {
-      setTimeout (function() {
-        resolve("Hello Cursor!")
-      },2000)
-  });
-};
+let firstPromise = new Promise((resolve, reject) => {
 
-async function getdata(){
-    const hellocursor = await promise();
-    console.log(hellocursor);
-}
+  setTimeout(() => {
+    resolve('Hello Cursor')
+  }, 10000);
 
-getdata();
+});
+
+let nextPromise = new Promise((resolve, reject) => {
+
+  resolve(firstPromise);
+
+});
+
+let test = async function () {
+  try{
+      let result = await nextPromise;
+      console.log(result);
+      } catch(error){
+        console.error(error);
+      }
+} 
+
+test()

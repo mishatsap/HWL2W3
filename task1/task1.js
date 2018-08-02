@@ -1,15 +1,22 @@
-var map = (array, func) => {
-	if(!Array.isArray(array)){
-		throw new Error(`${array} it's not array!`);
-	}
-	if(typeof func !== 'function') {
-		throw new Error(`${func} it's not a function!`);
-	}
-	 var newArray = [];
-	 for(let i = 0; i < array.length; i++) {
-	 	newArray.push(func(array[i], i, array));
-	 }
-	 return newArray;
+if (!Array.prototype.map) {
+
+    Array.prototype.map = function(callback, thisArg) {
+
+        if (this === void 0 || this === null) {
+            throw new TypeError(' this is null or not defined');
+        }
+        var obj = Object(this);
+        var len = obj.length >>> 0;
+        if (typeof callback !== "function") {
+            throw new TypeError(`${callback} is not a function`);
+        }
+        var res = [ ];
+        for (var i = 0; i < len; i++) {
+            if (i in obj) {
+                var val = obj[i];
+                res[i] = thisArg ? callback.call(thisArg, val, i, obj) : callback(val, i, obj);
+            }
+        }
+        return res;
+    }
 }
-var arr = [1, 2, 3, 4, 5];
-arr

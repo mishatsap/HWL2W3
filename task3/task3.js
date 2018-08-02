@@ -1,12 +1,12 @@
-let promise = new Promise((resolve, reject) => {
+let firstPromise = new Promise((resolve, reject) => {
 
   setTimeout(() => {
-    resolve("Hello Cursor")
-  }, 2000);
+    resolve('Hello Cursor')
+  }, 10000);
 
 });
-promise.then(
+firstPromise.then(
     result => {
-      alert("Fulfilled: " + "Hello Cursor");
+      alert(result);
     }
   );
