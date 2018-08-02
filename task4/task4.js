@@ -15,9 +15,9 @@ let nextPromise = new Promise((resolve, reject) => {
 let test = async function () {
   try{
       let result = await nextPromise;
-      console.log(result);
+        alert(result);
       } catch(error){
-        console.error(error);
+        alert(error);
       }
 } 
 
